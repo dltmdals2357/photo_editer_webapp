@@ -3,24 +3,6 @@ import streamlit as st
 from PIL import Image, ImageEnhance
 import os
 
-def initialize_folder(folder_path):
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    else:
-        empty_folder(folder_path)
-
-def empty_folder(folder_path):
-    for filename in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, filename)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
-        elif os.path.isdir(file_path):
-            empty_folder(file_path)
-
-folder_to_initialize = "./image"
-
-initialize_folder(folder_to_initialize)
-
 if 'info' not in st.session_state:
     st.session_state.info = {"brightness":1, "sharpness":1, "contrast":1,"color":1}
 
